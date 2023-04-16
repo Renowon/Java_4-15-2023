@@ -1,0 +1,609 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package tutorial3;
+
+/**
+ *
+ * @author Renn
+ */
+public class Circle {
+
+    // field
+    double radius = 0;
+    static int numOfCircle = 0;
+
+    // constructor
+    Circle(int radius) {
+        this.radius = radius;
+        Circle.numOfCircle++;
+    }
+    
+
+    // method
+    double getArea() {
+        return radius * radius * Math.PI;
+    }
+    
+   
+    
+    
+}
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package tutorial3;
+
+/**
+ *
+ * @author Renn
+ */
+public class CreateArrayOfCircle {
+
+    public static void main(String[] args) {
+        Circle[] circles = new Circle[3];     // array of Circle object has been created. circles is array of Circle object
+                                              // and this array is initialized as null, which means they do no refer to any Circle objects
+        
+        circles[0] = new Circle(1);     // create three Circle objects and store them in the circles array
+        circles[1] = new Circle(2);
+        circles[2] = new Circle(3);
+        
+        for (int i = 0; i < 3; i++) {
+            double area = circles[i].getArea();
+            System.out.println(area);
+        }
+    }
+}
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package tutorial3;
+
+/**
+ *
+ * @author Renn
+ */
+public class MyMath {
+    long add(long a, long b) {
+        return a + b;
+    }
+    
+    long subtract(long a, long b) {
+        return a - b;
+    }
+    long multiply(long a, long b) {
+        return a * b;
+    }
+    
+    long divide(long a, long b) {
+        return a / b;
+    }
+    
+    public static void main(String[] args) {
+        MyMath mm = new MyMath();
+        
+        long result1 = mm.add(1L, 2L );
+        long result2 = mm.subtract(5L, 3L);
+        long result3 = mm.multiply(5L, 3L);
+        double result4 = mm.divide(5L, 3);
+        
+        System.out.println("add(1L, 2L ): " + result1);
+        System.out.println("subtract(5L, 3L): " + result2);
+        System.out.println("multiply(5L, 3L): " + result3);
+        System.out.println("divide(5L, 3): " + result4);
+    }
+        
+}
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package tutorial3;
+
+/** In this source code, method, instance, class and objects will be addressed
+ * Object = person
+ * Instance = Creating an object (both are almost same)
+ * Field = property of object
+ * method = Object's behavior
+ * 
+ * constructor name should be same as the name of the class starting with capitalized letter (also convention) -> but not necessarily needed(what case?) -> only in case I didn't define it. Compiler will use default constructor
+ * If you declaring the constructor with out access modifier, there is a restriction in access. Only available in same package
+ * So it's better to add public in order to use in other packages
+ * @author Renn
+ */
+
+public class PersonTest {   // class: plan or design to create an object
+    // Field (property: The data of object are stored here
+    String name;
+    int age;
+    char sex;
+    
+    // constructor: Initialize of object when they are created
+    PersonTest(String name, int age, char sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    
+    // Method (Behavior): In charge of object's behavior
+    void eat() {
+        System.out.println("Eating pizza");
+    }
+    
+    void walk() {
+        System.out.println("Walking 2km");
+    }
+    
+    void sleep() {
+        System.out.println("Sleeping 7hours");
+    }
+    
+    public static void main(String[] args) {    // main method which acts as the starting point 
+        // create object = instance
+        PersonTest one = new PersonTest("one", 1, 'm');
+        PersonTest two = new PersonTest("two", 2, 'f');
+        
+        one.eat();
+        one.walk();
+        one.sleep();
+        
+        two.eat();
+        two.walk();
+        two.sleep();
+        
+        
+    }
+}
+/**public class PersonTest {   // class: plan or design to create an object
+    // Field (property: The data of object are stored here
+    String name;
+    int age;
+    char sex;
+    
+    // constructor: Initialize of object when they are created
+     PersonTest(String name, int age, char sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    
+    // Method (Behavior): In charge of object's behavior
+    void eat() {
+        System.out.println("Eating pizza");
+    }
+    
+    void walk() {
+        System.out.println("Walking 2km");
+    }
+    
+    void sleep() {
+        System.out.println("Sleeping 7hours");
+    }
+    
+    public static void main(String[] args) {    // main method which acts as the starting point 
+        // create object = instance
+        /*PersonTest p1 = new PersonTest();
+        PersonTest p2 = new PersonTest();
+        
+        // usage of method
+        PersonTest one = new PersonTest();
+        one.eat();
+        
+        
+        
+        
+    }
+    
+}*/
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package tutorial3;
+
+/**
+ * Q1. What I did
+ * Try to swap the value by using method but didn't work.
+ * @author Renn
+ */
+public class TestSwap {
+    
+    /**
+     * pass by value -> not working
+     * 
+     * @param n1
+     * @param n2 
+     */
+    
+    public static void swap1(int n1, int n2) {
+        int temp = n1;
+        n1 = n2;
+        n2 = temp;
+    }
+    
+    /**
+     * Pass by reference    -> not working (Integer is immutable class)
+     */
+    
+    public static void swap2(Integer n3, Integer n4) {
+        Integer temp = n3;
+        n3 = n4;
+        n4 = temp;
+    }
+    
+    // it works as Int objects are swapped by their value field.
+    public static void swap3(Int n5, Int n6) {
+        int temp = n5.value;
+        n5.value = n6.value;
+        n6.value = temp;
+    }
+    
+    private static class Int {
+        
+        public int value;
+        
+        Int(int n) {
+            value = n;
+        }
+        
+       
+       
+    }
+    
+    public static void main(String[] args) {
+        
+        int num1 = 1;
+        int num2 = 2;
+        Integer num3 = 3;   //auto-boxing
+        Integer num4 = 4;
+        Int num5 = new Int(5);
+        Int num6 = new Int(6);
+        
+        System.out.println("Before the swap1, num1: " + num1 + " num2: " + num2);
+        swap1(num1, num2);
+        System.out.println("After the swap1, num1: " + num1 + " num2: " + num2);
+        
+        System.out.println("Before the swap2, num3: " + num3 + " num4: "+ num4);
+        swap2(num3, num4);
+        System.out.println("After the swap2, num3: " + num3 + " num4: "+ num4);
+        
+        System.out.println("Before the swap3, num5: " + num5.value + " num6: "+ num6.value);
+        swap3(num5, num6);
+        System.out.println("After the swap3, num5: " + num5.value + " num6: "+ num6.value);
+    }
+}
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package tutorial3;
+
+/** In main method, we can figure out there should be two classes named Point and Line. 
+ * class Point doesn't need a method. class Line needs a method, named findLength();
+ * As instance of class Point are used as reference variable in new Line(start, end), better to define class Point
+ * 
+ * Point start = new Point(2, 3). 
+ * Point is the class name (=constructor name)
+ * constructor is invoked using the new operator when an object is created ex) new Point(2, 2)
+ * new Circle(); //without args 
+ * new Circle(5.0) //with args
+ * A class may be declared without constructors. In this case, default constructor (no agrs and empty body) is implicitly declared in the class
+ * constructor overloading is also available! (example at the bottom)
+ * 
+ * Point start  // reference variable 
+ * Point start = new Point(2, 3);   //new Point(2, 3) creates an object and return its reference value  
+ * Point start  // if reference variable does not reference any objects, then the data field holds a special literal value, null
+ * 
+ * start.a + start.b    // referencing the object's data
+ * 
+ * line.findLength()    // invoking object's method
+ * 
+ * static modifier
+ * static modifier can be used in variables methods
+ * They are not copied to each instances but registered in the class only
+ * Static variable/method can be accessed through a class reference.
+ * static variables are shared by all the instances of the same class
+ * 
+ * @author Renn
+ */
+public class tutorial3_1 {
+    public static void main(String[] args) {
+        Point start = new Point(2, 2);
+        Point end = new Point(5, 6);
+        Line line = new Line(start, end);
+        System.out.println("The length is " + line.findLength());
+    }
+    
+    static class Point{
+        
+        int a;
+        int b;
+        
+        Point(int a, int b) {
+            this.a = a;
+            this.b = b;
+        }
+    }
+    
+    static class Line {
+        
+        Point start;
+        Point end;
+        
+        Line(Point n1, Point n2) {
+            this.start = n1;
+            this.end = n2;
+        }
+        
+        double findLength() {
+            return Math.sqrt(Math.pow(start.a - end.a, 2) + Math.pow(start.b - end.b, 2));
+        }
+        
+    }
+}
+
+/*  constructor overloading example
+public class Person {
+    private String name;
+    private int age;
+    
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    public Person(String name) {
+        this(name, 0); // Calls the other constructor with age set to 0
+    }
+    
+    // Other methods of the class...
+}*/
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package tutorial3;
+
+/**
+ *
+ * @author Renn
+ */
+public class tutorial3_1_revise {
+
+    public static void main(String[] args) {
+        Point start = new Point(2, 2);      // Point is the class name
+        Point end = new Point(5, 6);        // Point only needs constructor
+        Line line = new Line(start, end);   // Using object of class Point. Line is the class name
+        System.out.println("The length is " + line.findLength());   //  line needs field, constructor and method, named findLength()
+    }
+
+    static class Point {
+
+        int c;
+        int d;
+
+        Point(int a, int b) {
+            this.c = a;
+            this.d = b;
+        }
+    }
+
+    static class Line {
+
+        Point one;
+        Point two;
+
+        Line(Point x, Point y) {
+            this.one = x;
+            this.two = y;
+        }
+        
+        double findLength() {
+            return Math.sqrt(Math.pow(one.c - two.c, 2) + Math.pow(one.d - two.d, 2));
+        }
+
+    }
+
+}
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package tutorial3;
+
+/**
+ *
+ * @author Renn
+ */
+public class tutorial3_1_revise2 {
+    public static void main(String[] args) {
+        Point start = new Point(2 , 2);
+        Point end = new Point(5, 6);
+        Line line = new Line(start, end);
+        System.out.println("The length is " + line.findLength());
+    }
+    
+    static class Point {
+        
+        int num1;
+        int num2;
+        
+        Point(int a, int b) {
+            this.num1 = a;
+            this.num2 = b;
+        }
+    } 
+    
+    static class Line {     
+        /**
+         * As arguments are Point object, we can assume that constructor get Point object as input 
+         * and it mean we should use data Field with Point reference variables (null)
+         * Then assigned the argument value to reference variables and then use these in order to get findLength()/
+         */
+                            
+        
+        Point num3;
+        Point num4;
+        
+        Line(Point a, Point b) {
+            this.num3 = a;
+            this.num4 = b;
+        }
+        
+        double findLength() {
+            return Math.sqrt(Math.pow(num3.num1 - num4.num1, 2) + Math.pow(num3.num2 - num4.num2 , 2));
+        }
+            
+    }
+    
+}
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package tutorial3;
+
+/**
+ * Practice of method and field
+ *
+ * @author Renn
+ */
+public class Tv {
+   // property of TV (Field)
+    
+    boolean power;
+    int channel;
+    
+    //  Tv function (method)
+    void power() {
+        power = !power;
+    }
+    void channelUp() {
+        ++channel;
+    }
+    void channelDown() {
+        --channel;
+    }
+    
+    
+    public static void main(String[] args) {
+        Tv t = new Tv();
+        
+        t.channel = 7; 
+        t.power = true;
+       
+        t.channelDown();
+        System.out.println("The channel is " + t.channel + " now");
+        t.channelUp();
+        System.out.println("The channel is " + t.channel + " now");
+        t.power();
+        System.out.println("Now power is " + t.power);
+        
+        Tv t1 = new Tv();
+        Tv t2 = new Tv();
+        
+        System.out.println("Channel on t1 is" + t1.channel);
+        System.out.println("Channel on t2 is" + t2.channel);
+        
+        t2 = t1; 
+        /**now reference variable t2 points same instance as t1
+         * the instance originally designated by t2 is no longer in use so that deleted in memory (Garage Collector) 
+         */
+        
+        t1.channel = 7;
+        
+        System.out.println("Now channel of t1 is " + t1.channel);
+        System.out.println("The channel of t2 is " + t2.channel);
+        
+        t1.channelDown();
+        
+        System.out.println("Now channel of t1 is " + t1.channel);
+        System.out.println("The channel of t2 is " + t2.channel);
+        
+        
+    }
+}
+
+
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package tutorial3;
+
+import javax.swing.JOptionPane;
+
+/**
+ * this source file includes Ambiguous Invocation: From the program below, there
+ * should be an error but my Java IDE automatically resolving the ambiguous
+ * invocation. But it does not mean that this is recommended as it may make team
+ * work hard as this is improper way. Name it as Max_Int and Max_Double would be
+ * better. -> Asked IBM engineer and he said it's available and method overloading is used in company as well
+ * number_count method: practice array
+ * @author Renn
+ */
+public class Ambiguous_Invocation {
+
+    public static double max(int num1, int num2) {
+        if (num1 > num2) {
+            return num1;
+        } else {
+            return num2;
+        }
+    }
+
+    public static double max(double num1, int num2) {
+        if (num1 > num2) {
+            return num1;
+        } else {
+            return num2;
+        }
+    }
+
+    public static void number_counter() {
+
+        String input = JOptionPane.showInputDialog("Enter the size of array:");
+        int input_num = Integer.parseInt(input);
+
+        double[] myArray = new double[input_num];
+
+        for (int i = 0; i < myArray.length; i++) {
+            myArray[i] = Math.random();
+        }
+
+        System.out.println("Show me the array elements: ");
+
+        for (int i = 0; i < input_num; i++) {
+            System.out.print(myArray[i] + " ");
+        }
+
+        double temp = myArray[0];
+
+        System.out.println();
+        System.out.println("What is the biggest number?");
+        for (int i = 0; i < input_num - 1; i++) {
+
+            if (temp > myArray[i + 1]) {
+                myArray[i + 1] = temp;
+            } else {
+                temp = myArray[i + 1];
+            }
+        }
+        System.out.println(temp);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(max(1.0, 2));
+        number_counter();
+    }
+}
